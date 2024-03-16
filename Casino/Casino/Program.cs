@@ -2,11 +2,11 @@
 
 class Program
 {
-    static void Main()
+    static void MAIN()
     {
         int balance = 10000;
 
-        while (balance > 0)
+        while (balance > 1)
         {
             Console.WriteLine("Your balance: " + balance);
             Console.Write("Enter your bet: ");
