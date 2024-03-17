@@ -2,13 +2,13 @@
 
 class Program
 {
-    static void MAIN()
+    static void main()
     {
         int balance = 10000;
 
-        while (balance > 1)
+        while (balance > 0)
         {
-            Console.WriteLine("Your balance: " + balance);
+            Console.WriteLine("ваш баланс: " + balance);
             Console.Write("Enter your bet: ");
             int bet = Convert.ToInt32(Console.ReadLine());
 
