@@ -2,19 +2,19 @@
 
 class Program
 {
-    static void main()
+    static void Main()
     {
         int balance = 10000;
 
         while (balance > 0)
         {
             Console.WriteLine("ваш баланс: " + balance);
-            Console.Write("Enter your bet: ");
+            Console.Write("введите вашу ставку: ");
             int bet = Convert.ToInt32(Console.ReadLine());
 
             if (bet > balance)
             {
-                Console.WriteLine("You cannot bet more than your balance. Try again.");
+                Console.WriteLine("Вы не можете поставить больше вашего баланса");
                 continue;
             }
 
@@ -26,15 +26,19 @@ class Program
                 int multiplicator = rnd.Next(1, 17);
                 int win = bet * (1 + (multiplicator * (randomNum % 17)));
                 balance += win;
-                Console.WriteLine("You won " + win + " units!");
+                Console.WriteLine("вы выиграли " + win + " рублей!");
             }
             else
             {
                 balance -= bet;
-                Console.WriteLine("You lost. Try again.");
-            }
-        }
+                Console.WriteLine("Вы проиграли. Попробуйте снова.");
 
-        Console.WriteLine("Game over. Your balance is 0. Thanks for playing!");
+            }
+            if (balance == 0)
+            {
+                Console.WriteLine("Игра окончена.Ваш баланс = 0!");
+            }
+            
+        }
     }
 }
