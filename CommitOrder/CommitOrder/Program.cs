@@ -19,13 +19,17 @@ class Program
         string? address = Console.ReadLine();
         Console.WriteLine("\nПодтверждение введенных данных:");
         Console.WriteLine($"Здравствуйте, {name}, вы заказали {quantity} {product} на адрес {address}, верно?");
-        Console.WriteLine("Это верно? (1)Yes (2)No");
-        string? answer = Console.ReadLine();
-        if (answer == '1'.ToString())
+        Console.WriteLine("Это верно? -- да, нет");
+        string answer = Console.ReadLine();
+        switch (answer)
         {
-            Console.WriteLine($"{name}, ваш заказ: {product} в коллличестве: {quantity} оформлен, ожидайте доставку по адресу: {address} к {TodayDate}");
+            case "да":
+                Console.WriteLine($"{name}, ваш заказ: {product} в колличестве: {quantity} оформлен, ожидайте доставку по адресу: {address} к {TodayDate}");
+                break;
+            default:
+                Console.WriteLine("Пожалуйста, перепроверьте свои данные");
+                break;
         }
-        else
-        Console.WriteLine("Пожалуйста, перепроверьте свои данные");
+        
     }
 }
