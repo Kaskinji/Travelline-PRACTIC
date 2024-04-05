@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class Translator
 {
-    private static Dictionary<string, string> translations = new Dictionary<string, string>();
+    private static Dictionary<string, string> _translations = new();
 
    
     
@@ -61,7 +61,7 @@ public class Translator
         Console.Write("Введите перевод на английском ");
         string translation = Console.ReadLine();
 
-        translations[word] = translation.Trim();
+        _translations[word] = translation.Trim();
 
         Console.WriteLine("Перевод сохранён!");
     }
@@ -71,9 +71,9 @@ public class Translator
         Console.Write("введите слово на русском, которое хотите удалить: ");
         string word = Console.ReadLine();
 
-        if (translations.ContainsKey(word))
+        if (_translations.ContainsKey(word))
         {
-            translations.Remove(word);
+            _translations.Remove(word);
             Console.WriteLine("перевод слова удалён!");
         }
         else
@@ -87,11 +87,11 @@ public class Translator
         Console.Write("введите слово на русском, у которого желаете сменить превод: ");
         string word = Console.ReadLine();
 
-        if (translations.ContainsKey(word))
+        if (_translations.ContainsKey(word))
         {
             Console.Write("введите новый перевод: ");
             string newTranslation = Console.ReadLine();
-            translations[word] = newTranslation;
+            _translations[word] = newTranslation;
             Console.WriteLine("перевод изменён успешно!");
         }
         else
@@ -105,9 +105,9 @@ public class Translator
         Console.Write("Введите слово на русском для перевода: ");
         string word = Console.ReadLine();
 
-        if (translations.ContainsKey(word))
+        if (_translations.ContainsKey(word))
         {
-            Console.WriteLine($"перевод: {translations[word]}");
+            Console.WriteLine($"перевод: {_translations[word]}");
         }
         else
         {
