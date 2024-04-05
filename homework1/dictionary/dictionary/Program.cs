@@ -1,27 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 
-class Translator
+public class Translator
 {
     private static Dictionary<string, string> translations = new Dictionary<string, string>();
 
+   
+    
     static void Main()
     {
+        Menu();
         Console.WriteLine("Welcome to Translator!");
 
         while (true)
         {
-            Console.WriteLine("\nMenu:");
-            Console.WriteLine("1. AddTranslation");
-            Console.WriteLine("2. RemoveTranslation");
-            Console.WriteLine("3. ChangeTranslation");
-            Console.WriteLine("4. Translate");
-            Console.WriteLine("5. Exit");
-
             Console.Write("Enter your choice: ");
             string choice = Console.ReadLine();
+            string chooice = choice.Trim();
+            Choise(chooice);
+            break;
+        }
+    }
 
-            switch (choice)
+    static void Choise(string choice)
+    {
+         switch (choice)
             {
                 case "1":
                     AddTranslation();
@@ -39,7 +42,15 @@ class Translator
                     Console.WriteLine("Неверно введённые данные. Повторите попытку.");
                     break;
             }
-        }
+    }
+    static void Menu()
+    {
+        Console.WriteLine("\nMenu:");
+        Console.WriteLine("1. AddTranslation");
+        Console.WriteLine("2. RemoveTranslation");
+        Console.WriteLine("3. ChangeTranslation");
+        Console.WriteLine("4. Translate");
+        Console.WriteLine("5. Exit");
     }
 
     static void AddTranslation()
@@ -50,7 +61,7 @@ class Translator
         Console.Write("Введите перевод на английском ");
         string translation = Console.ReadLine();
 
-        translations[word] = translation;
+        translations[word] = translation.Trim();
 
         Console.WriteLine("Перевод сохранён!");
     }
