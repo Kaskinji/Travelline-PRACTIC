@@ -1,20 +1,23 @@
-﻿using System;
-
-class Program
+﻿class Program
 {
     static void Main()
     {
         int balance = 10000;
-
+        int bet = 0;
         while (balance > 0)
         {
             Console.WriteLine("ваш баланс: " + balance);
             Console.Write("введите вашу ставку: ");
             try
             {
-                int bet = Convert.ToInt32(Console.ReadLine());
+                bet = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Ошибка ввода числа. Пожалуйста, введите корректное число."); 
+            };
 
-                if (bet >= balance)
+            if (bet >= balance)
                 {
                     Console.WriteLine("Вы не можете поставить больше вашего баланса");
                     continue;
@@ -34,15 +37,12 @@ class Program
                 {
                     balance -= bet;
                     Console.WriteLine("Вы проиграли. Попробуйте снова.");
-
                 }
                 if (balance == 0)
                 {
                     Console.WriteLine("Игра окончена.Ваш баланс = 0!");
                 }
-            }
-            catch (FormatException e)
-            { Console.WriteLine("Ошибка ввода числа. Пожалуйста, введите корректное число."); }
+           
         }
     }
 }

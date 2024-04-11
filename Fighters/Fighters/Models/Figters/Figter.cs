@@ -19,10 +19,11 @@ namespace Fighters.Models.Fighters
 
         public Fighter(string name, IRace race, IClass newClass, IArmor newArmor, IWeapon newWeapon)
         {
+ 
             Name = name;
-            Race = race;  
-            CurrentHealth = MaxHealth;
+            Race = race;
             Class = newClass;
+            CurrentHealth = MaxHealth;
             Weapon = newWeapon;
             Armor = newArmor;
         }
