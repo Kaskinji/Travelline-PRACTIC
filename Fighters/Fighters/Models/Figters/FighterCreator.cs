@@ -32,7 +32,7 @@ namespace Fighters
             {
                 1 => new Nord(),
                 2 => new Argonianin(),
-                3 => new Dark_Elf(),
+                3 => new DarkElf(),
                 4 => new Kadjite(),
             };
         }

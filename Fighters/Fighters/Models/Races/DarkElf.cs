@@ -1,6 +1,6 @@
 ﻿namespace Fighters.Models.Races
 {
-    public class Dark_Elf : IRace
+    public class DarkElf : IRace
     {
         public string Name => "Человек";
         public int Damage => 10;
