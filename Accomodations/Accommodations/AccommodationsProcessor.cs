@@ -1,6 +1,7 @@
 using System.Globalization;
 using Accommodations.Commands;
 using Accommodations.Dto;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Accommodations;
 
@@ -9,6 +10,8 @@ public static class AccommodationsProcessor
     private static BookingService _bookingService = new();
     private static Dictionary<int, ICommand> _executedCommands = new();
     private static int s_commandIndex = 0;
+    private static CurrencyDto currency;
+
 
     public static void Run()
     {
@@ -49,7 +52,35 @@ public static class AccommodationsProcessor
                     return;
                 }
 
-                CurrencyDto currency = (CurrencyDto) Enum.Parse(typeof(CurrencyDto), parts[5], true);
+                //добавил обработку исключений для некорректного ввода даты и курса
+                try
+                {
+                   DateTime.Parse(parts[3]);
+                }
+                catch
+                {
+                   throw new ArgumentException("Date of the book beginning is incorrect");
+                }
+
+                try
+                {
+                    DateTime.Parse(parts[4]);
+                }
+                catch
+                {
+                    throw new ArgumentException("Date of the book ending is incorrect");
+                }
+
+                try
+                {
+                    CurrencyDto currency = (CurrencyDto)Enum.Parse(typeof(CurrencyDto), parts[5], true);
+
+                }
+                catch
+                {
+                    throw new ArgumentException("unvalid currency");
+                    
+                }
 
                 BookingDto bookingDto = new()
                 {
