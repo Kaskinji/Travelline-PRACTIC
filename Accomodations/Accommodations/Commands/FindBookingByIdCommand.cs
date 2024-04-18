@@ -8,8 +8,7 @@ public class FindBookingByIdCommand(IBookingService bookingService, Guid booking
     {
         Booking? booking = bookingService.FindBookingById(bookingId);
         Console.WriteLine(booking != null
-            //поправил путь, чтобы было до Name
-            ? $"Booking found: {booking.RoomCategory.Name} for User {booking.UserId}"
+            ? $"Booking found: {booking.RoomCategory} for User {booking.UserId}"
             : "Booking not found.");
     }
 
