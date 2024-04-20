@@ -13,24 +13,21 @@ namespace Fighters
                 Console.WriteLine($"Раунд {round++}.");
 
                 // First fights second
-                if (FightAndCheckIfOpponentDead(firstFighter, secondFighter))
+                Fight(firstFighter, secondFighter);
+                if (secondFighter.IsDead())
                 {
                     return firstFighter;
                 }
-
-                // Second fights first
-                if (FightAndCheckIfOpponentDead(secondFighter, firstFighter))
+                else
                 {
                     return secondFighter;
                 }
-
-                Console.WriteLine();
             }
 
             throw new UnreachableException();
         }
 
-        private bool FightAndCheckIfOpponentDead(IFighter roundOwner, IFighter opponent)
+        private void Fight(IFighter roundOwner, IFighter opponent)
         {
             int damage = roundOwner.CalculateDamage();
             opponent.TakeDamage(damage);
@@ -38,9 +35,7 @@ namespace Fighters
             Console.WriteLine(
 
                 $"Боец {opponent.Name} получает {damage} урона. " +
-                $"Количество жизней: {opponent.CurrentHealth}");
-
-            return opponent.CurrentHealth < 1;
+                $"Количество жизней: {opponent.CurrentHealth}");      
         }
     }
 }

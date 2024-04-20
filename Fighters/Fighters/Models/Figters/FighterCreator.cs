@@ -1,5 +1,5 @@
 ﻿using Fighters.Models.Armors;
-using Fighters.Models.Classes;
+using Fighters.Models.Types;
 using Fighters.Models.Fighters;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
@@ -12,10 +12,9 @@ namespace Fighters
         public static Fighter CreateFighter()
         {
             Console.WriteLine("Выберете имя персонажа:");
-            string name = Console.ReadLine() ?? throw new ArgumentException("Ошибка ввода имени");
-            
+            string name = Console.ReadLine() ?? throw new ArgumentException("Ошибка ввода имени");           
             IRace newRace = MyRace();
-            IClass newClass = MyClass();
+            IType newClass = MyClass();
             IWeapon newWeapon = MyWeapon();
             IArmor newArmor = MyArmor();
             return new Fighter(name, newRace, newClass, newArmor, newWeapon);
@@ -37,7 +36,7 @@ namespace Fighters
             };
         }
 
-        private static IClass MyClass()
+        private static IType MyClass()
         {
             Console.WriteLine("Выберите класс:");
             Console.WriteLine("1. Воин");

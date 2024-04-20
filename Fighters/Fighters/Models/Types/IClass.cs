@@ -1,6 +1,6 @@
-﻿namespace Fighters.Models.Classes
+﻿namespace Fighters.Models.Types
 {
-    public interface IClass
+    public interface IType
     {
         int Damage { get; }
         int Health { get; }

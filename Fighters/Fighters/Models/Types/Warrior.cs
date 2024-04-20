@@ -1,6 +1,6 @@
-﻿namespace Fighters.Models.Classes
+﻿namespace Fighters.Models.Types
 {
-    public class Warrior : IClass
+    public class Warrior : IType
     {
         public int Damage => 40;
         public int Health => 50;
