@@ -36,7 +36,8 @@ namespace Fighters.Models.Fighters
 
         public void TakeDamage(int damage)
         {
-            Health =- (damage - Armor);
+            int SetArmor = Armor.Armor;
+            Health =- (damage - SetArmor);
             if (Health <= 0)
             {
                 Health = 0;
