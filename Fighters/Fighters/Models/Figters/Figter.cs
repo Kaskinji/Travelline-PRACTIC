@@ -1,29 +1,30 @@
 ﻿using Fighters.Models.Armors;
-using Fighters.Models.Classes;
+using Fighters.Models.Types;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
+using Fighters.Models.Fighters;
 
 namespace Fighters.Models.Fighters
 {
     public class Fighter : IFighter
     {
-        public int MaxHealth => (Race.Health + Class.Health);
-        public int CurrentHealth { get; set; }
+        public int Health { get; set; }
+        public int CurrentHealth => (Race.Health + Class.Health);
 
         public string Name { get; }
 
         public IRace Race { get; }
-        public IWeapon Weapon { get; set; }
-        public IArmor Armor { get;  set; }
-        public IClass Class { get; set; }
+        public IWeapon Weapon { get; private set; }
+        public IArmor Armor { get; set; }
+        public IType Class { get; private set; }
 
-        public Fighter(string name, IRace race, IClass newClass, IArmor newArmor, IWeapon newWeapon)
+        public Fighter(string name, IRace race, IType newClass, IArmor newArmor, IWeapon newWeapon)
         {
  
             Name = name;
             Race = race;
             Class = newClass;
-            CurrentHealth = MaxHealth;
+            Health = CurrentHealth;
             Weapon = newWeapon;
             Armor = newArmor;
         }
@@ -35,10 +36,22 @@ namespace Fighters.Models.Fighters
 
         public void TakeDamage(int damage)
         {
-            CurrentHealth -= damage;
-            if (CurrentHealth < 0)
+            int SetArmor = Armor.Armor;
+            Health =- (damage - SetArmor);
+            if (Health <= 0)
             {
-                CurrentHealth = 0;
+                Health = 0;
+            }
+        }
+        public bool IsDead()
+        {
+            if (Health <= 0) 
+            {
+                return(true);
+            }
+            else
+            {
+                return(false);
             }
         }
     }
