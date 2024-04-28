@@ -1,6 +1,4 @@
-﻿using Fighters.Models.Fighters;
-
-namespace Fighters
+﻿namespace Fighters
 {
     public class Program
     {

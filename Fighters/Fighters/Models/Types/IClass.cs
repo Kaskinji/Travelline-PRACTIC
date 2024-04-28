@@ -4,5 +4,6 @@
     {
         int Damage { get; }
         int Health { get; }
+        int Speed { get; }
     }
 }

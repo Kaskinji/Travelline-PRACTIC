@@ -12,8 +12,17 @@ namespace Fighters
             {
                 Console.WriteLine($"Раунд {round++}.");
 
-                // First fights second
-                Fight(firstFighter, secondFighter);
+                if (firstFighter.Speed > secondFighter.Speed )
+                {
+                    Fight(firstFighter, secondFighter);
+                    Fight(secondFighter, firstFighter);
+                }
+                else
+                {
+                    Fight(secondFighter, firstFighter);
+                    Fight(firstFighter, secondFighter);
+                }
+
                 if (secondFighter.IsDead())
                 {
                     return firstFighter;
@@ -33,9 +42,8 @@ namespace Fighters
             opponent.TakeDamage(damage);
 
             Console.WriteLine(
-
                 $"Боец {opponent.Name} получает {damage} урона. " +
-                $"Количество жизней: {opponent.CurrentHealth}");      
+                    $"Количество жизней: {opponent.CurrentHealth}");      
         }
     }
 }

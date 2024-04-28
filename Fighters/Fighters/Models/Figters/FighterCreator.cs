@@ -3,7 +3,6 @@ using Fighters.Models.Types;
 using Fighters.Models.Fighters;
 using Fighters.Models.Races;
 using Fighters.Models.Weapons;
-using System.Linq.Expressions;
 
 namespace Fighters
 {
@@ -93,7 +92,9 @@ namespace Fighters
             while (true)
             {
                 Console.Write("Выберите опцию: ");
-                if (!int.TryParse(Console.ReadLine(), out choice) || choice < minValue || choice > maxValue)
+                string MyChoice = Console.ReadLine();
+                choice = int.Parse(MyChoice);
+                if (choice < minValue || choice > maxValue)
                 {
                     Console.WriteLine($"Введите число от {minValue} до {maxValue}!");
                     continue;

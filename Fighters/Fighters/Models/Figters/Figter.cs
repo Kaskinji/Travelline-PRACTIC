@@ -9,8 +9,8 @@ namespace Fighters.Models.Fighters
     public class Fighter : IFighter
     {
         public int Health { get; set; }
+        public int Speed { get; set; }
         public int CurrentHealth => (Race.Health + Class.Health);
-
         public string Name { get; }
 
         public IRace Race { get; }

@@ -4,5 +4,6 @@
     {
         public int Damage => 40;
         public int Health => 50;
+        public int Speed => 40;
     }
 }

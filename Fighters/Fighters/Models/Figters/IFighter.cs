@@ -10,6 +10,7 @@ namespace Fighters.Models.Fighters
         public int Health { get; }
         public int CurrentHealth { get; }
 
+        public int Speed {  get; }
         public string Name { get; }
 
         public IWeapon Weapon { get; }
