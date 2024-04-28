@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-
-public class Translator
+﻿public class Translator
 {
-    private static Dictionary<string, string> _translations = new();
-
-   
-    
+    private static Dictionary<string, string> _translations = new();   
     static void Main()
     {
         Menu();
